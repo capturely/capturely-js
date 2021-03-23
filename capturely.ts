@@ -4,6 +4,8 @@ import Api from "./api";
 import Screenshot from "./structures/screenshot";
 import AbstractStructure from "./structures/abstractStructure";
 import Viewport from "./structures/viewport";
+import WaitUntil from "./structures/waitUntil";
+import Cookies from "./structures/cookies";
 
 class Capturely {
 	protected html: string | null = null;
@@ -11,11 +13,11 @@ class Capturely {
 	protected pdfObject: object | null = null;
 	protected screenshotObject: object | null = null;
 	protected viewportObject: object | null = null;
-	protected cookies: object = [];
+	protected cookiesObject: object = [];
 	protected userAgent: string | null = null;
 	protected authentication: object | null = null;
 	protected extraHttpHeaders: object | null = null;
-	protected waitUntil: object | null = null;
+	protected waitUntilObject: object | null = null;
 	protected emulateMediaType: string | null = null;
 	protected shouldStream: boolean = false;
 	
@@ -68,6 +70,18 @@ class Capturely {
 		return this;
 	}
 	
+	public waitUntil(input: Function | WaitUntil | null) {
+		this.waitUntilObject = this.resolveFunction(input, new WaitUntil());
+		
+		return this;
+	}
+	
+	public cookies(input: Function | Cookies | null) {
+		this.cookiesObject = this.resolveFunction(input, new Cookies());
+		
+		return this;
+	}
+	
 	protected resolveFunction(input: Function | AbstractStructure | null, className: AbstractStructure) {
 		return typeof input === 'function' ? (input(className)).toFormattedObject() : className.toFormattedObject()
 	}
@@ -75,11 +89,13 @@ class Capturely {
 	stream() {
 		this.shouldStream = true;
 		
+		this.capture();
+		
 		return this;
 	}
 	
 	capture(): Buffer {
-		return (new Api()).create(this.serializePayload());
+		return (new Api(this.serializePayload())).create();
 	}
 	
 	serializePayload() {
@@ -92,17 +108,17 @@ class Capturely {
 				'pdf': this.pdfObject,
 				'screenshot': this.screenshotObject,
 			},
-			'cookies': this.cookies,
+			'cookies': Object.values(this.cookiesObject)[0] || [],
 			'viewport': this.viewportObject,
 			'authentication': this.authentication,
 			'extraHttpHeaders': this.extraHttpHeaders,
-			'waitUntil': this.waitUntil,
+			'waitUntil': Object.values(this.waitUntilObject)[0] || [],
 			'userAgent': this.userAgent,
 			'emulateMediaType': this.emulateMediaType,
 			'stream': this.shouldStream,
 		};
 		
-		return JSON.stringify(this.cleanEmpty(data), null, '  ');
+		return this.cleanEmpty(data);
 	}
 	
 	private cleanEmpty = obj => {

@@ -8,22 +8,25 @@ let capture = Capturely
 			.displayHeaderFooter()
 			.landscape()
 			.printBackground()
-			.a0()
+			.a6()
 			.margin(10, 12, 15, 21);
 	})
-	.screenshot(function(ss) {
-		return ss
-			.jpeg(80)
-			.binary();
+	// .screenshot(function(screenshot) {
+	// 	return screenshot
+	// 		.jpeg(80)
+	// 		.binary();
+	// })
+	.waitUntil(function(wait){
+		return wait.networkIdle0();
 	})
-	.viewport(function(viewport) {
-		return viewport.windowSize(100, 200);
-	})
+	.viewport()
 	.stream();
+
+console.log(capture);
 
 // .capture();
 
 
 // console.log(capture.capture().toString('base64'));
 
-console.log(capture.serializePayload());
+// console.log(capture.serializePayload());
