@@ -1,6 +1,6 @@
-import Capture from './capture';
+import Capturely from './capturely';
 
-let capture = Capture
+let capture = Capturely
 	.html('abc')
 	.pdf(function(pdf) {
 		return pdf
@@ -8,8 +8,13 @@ let capture = Capture
 			.displayHeaderFooter()
 			.landscape()
 			.printBackground()
-			.a0();
-	});
+			.a0()
+			.margin(10, 12, 15, 21);
+	})
+	.screenshot(function(ss) {
+		return ss.jpeg(80);
+	})
+	.stream();
 
 // .capture();
 

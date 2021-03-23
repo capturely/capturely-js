@@ -1,27 +1,29 @@
 ///<reference path="structures/pdf.ts"/>
 import Pdf from "./structures/pdf";
 import Api from "./api";
+import Screenshot from "./structures/screenshot";
+import Abstract from "./structures/abstract";
 
-class Capture {
-	html: string | null = null;
-	url: string | null = null;
-	pdfObject: object | null = null;
-	screenshotObject: object | null = null;
-	viewportObject: object | null = null;
-	cookies: object = [];
-	userAgent: string | null = null;
-	authentication: object | null = null;
-	extraHttpHeaders: object | null = null;
-	waitUntil: object | null = null;
-	emulateMediaType: string | null = null;
-	shouldStream: boolean = false;
+class Capturely {
+	protected html: string | null = null;
+	protected url: string | null = null;
+	protected pdfObject: object | null = null;
+	protected screenshotObject: object | null = null;
+	protected viewportObject: object | null = null;
+	protected cookies: object = [];
+	protected userAgent: string | null = null;
+	protected authentication: object | null = null;
+	protected extraHttpHeaders: object | null = null;
+	protected waitUntil: object | null = null;
+	protected emulateMediaType: string | null = null;
+	protected shouldStream: boolean = false;
 	
 	static html(html: string) {
-		return new Capture().setHtml(html)
+		return new Capturely().setHtml(html)
 	}
 	
 	static url(url: string) {
-		return new Capture().setUrl(url)
+		return new Capturely().setUrl(url)
 	}
 	
 	public setHtml(html: string) {
@@ -40,13 +42,30 @@ class Capture {
 		return this;
 	}
 	
-	public pdf(input: Function | null) {
-		
+	/**
+	 * @callback Pdf
+	 */
+	public pdf(input: Function | Pdf | null) {
 		this.screenshotObject = null;
 		
-		this.pdfObject = typeof input === 'function' ? (input(new Pdf())).toObject() : (new Pdf).toObject();
+		this.pdfObject = this.resolveFunction(input, new Pdf());
 		
 		return this;
+	}
+	
+	/**
+	 * @callback Screenshot
+	 */
+	public screenshot(input: Function | Screenshot | null) {
+		this.pdfObject = null;
+		
+		this.screenshotObject = this.resolveFunction(input, new Screenshot());
+		
+		return this;
+	}
+	
+	private resolveFunction(input: Function | Pdf | Screenshot | null, className: Abstract) {
+		return typeof input === 'function' ? (input(className)).toObject() : className.toObject()
 	}
 	
 	stream() {
@@ -79,7 +98,7 @@ class Capture {
 			'stream': this.shouldStream,
 		};
 		
-		return this.cleanEmpty(data);
+		return JSON.stringify(this.cleanEmpty(data), null, '  ');
 	}
 	
 	private cleanEmpty = obj => {
@@ -95,4 +114,4 @@ class Capture {
 	}
 }
 
-export default Capture;
+export default Capturely;

@@ -3,7 +3,7 @@ import {request} from 'node:https';
 class Api {
 	uri: string = 'api.capturely.app';
 	
-	public create(data: object): Buffer | any {
+	public create(data: string): Buffer | any {
 		const responseEncoding = 'utf8';
 		
 		const api = request({
@@ -38,8 +38,6 @@ class Api {
 					} else {
 						callback(null, res.statusCode, res.headers["content-type"], responseStr);
 					}
-					
-					
 					
 					
 				});
