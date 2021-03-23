@@ -1,5 +1,5 @@
-///<reference path="abstract.ts"/>
-import AbstractStructure from "./abstract";
+///<reference path="abstractStructure.ts"/>
+import AbstractStructure from "./abstractStructure";
 
 class Pdf extends AbstractStructure {
 	

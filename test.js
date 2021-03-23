@@ -12,7 +12,12 @@ let capture = Capturely
 			.margin(10, 12, 15, 21);
 	})
 	.screenshot(function(ss) {
-		return ss.jpeg(80);
+		return ss
+			.jpeg(80)
+			.binary();
+	})
+	.viewport(function(viewport) {
+		return viewport.windowSize(100, 200);
 	})
 	.stream();
 

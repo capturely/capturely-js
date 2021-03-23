@@ -2,7 +2,8 @@
 import Pdf from "./structures/pdf";
 import Api from "./api";
 import Screenshot from "./structures/screenshot";
-import Abstract from "./structures/abstract";
+import AbstractStructure from "./structures/abstractStructure";
+import Viewport from "./structures/viewport";
 
 class Capturely {
 	protected html: string | null = null;
@@ -43,7 +44,7 @@ class Capturely {
 	}
 	
 	/**
-	 * @callback Pdf
+	 * @param input
 	 */
 	public pdf(input: Function | Pdf | null) {
 		this.screenshotObject = null;
@@ -53,9 +54,6 @@ class Capturely {
 		return this;
 	}
 	
-	/**
-	 * @callback Screenshot
-	 */
 	public screenshot(input: Function | Screenshot | null) {
 		this.pdfObject = null;
 		
@@ -64,8 +62,14 @@ class Capturely {
 		return this;
 	}
 	
-	private resolveFunction(input: Function | Pdf | Screenshot | null, className: Abstract) {
-		return typeof input === 'function' ? (input(className)).toObject() : className.toObject()
+	public viewport(input: Function | Viewport | null) {
+		this.viewportObject = this.resolveFunction(input, new Viewport());
+		
+		return this;
+	}
+	
+	protected resolveFunction(input: Function | AbstractStructure | null, className: AbstractStructure) {
+		return typeof input === 'function' ? (input(className)).toFormattedObject() : className.toFormattedObject()
 	}
 	
 	stream() {
