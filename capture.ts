@@ -40,10 +40,11 @@ class Capture {
 		return this;
 	}
 	
-	public pdf(input: Pdf | null) {
+	public pdf(input: Function | null) {
+		
 		this.screenshotObject = null;
 		
-		this.pdfObject = input ? input : (new Pdf).toObject()
+		this.pdfObject = typeof input === 'function' ? (input(new Pdf())).toObject() : (new Pdf).toObject();
 		
 		return this;
 	}
