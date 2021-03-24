@@ -1,4 +1,4 @@
-import Capturely from './capturely';
+import Capturely from "../src/capturely";
 
 let capture = Capturely
 	.html('abc')
@@ -11,18 +11,7 @@ let capture = Capturely
 			.a6()
 			.margin(10, 12, 15, 21);
 	})
-	// .screenshot(function(screenshot) {
-	// 	return screenshot
-	// 		.jpeg(80)
-	// 		.binary();
-	// })
-	.waitUntil(function(wait){
-		return wait.networkIdle0();
-	})
-	.viewport()
-	.stream();
-
-console.log(capture);
+	.capture();
 
 // .capture();
 

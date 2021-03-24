@@ -16,9 +16,9 @@ class Capturely {
 	protected cookiesObject: object = [];
 	protected userAgent: string | null = null;
 	protected authentication: object | null = null;
-	protected extraHttpHeaders: object | null = null;
-	protected waitUntilObject: object | null = null;
-	protected emulateMediaType: string | null = null;
+	protected extraHttpHeaders: object = {};
+	protected waitUntilObject: object = {};
+	protected emulateMediaType: string = null;
 	protected shouldStream: boolean = false;
 	
 	static html(html: string) {
@@ -94,8 +94,11 @@ class Capturely {
 		return this;
 	}
 	
-	capture(): Buffer {
-		return (new Api(this.serializePayload())).create();
+	capture() {
+		return (new Api(this.serializePayload())).create().then(function (res) {
+			console.log(res);
+			return res;
+		});
 	}
 	
 	serializePayload() {
@@ -121,7 +124,7 @@ class Capturely {
 		return this.cleanEmpty(data);
 	}
 	
-	private cleanEmpty = obj => {
+	protected cleanEmpty = obj => {
 		if (Array.isArray(obj)) {
 			return obj
 				.map(v => (v && typeof v === 'object') ? this.cleanEmpty(v) : v)
