@@ -42,7 +42,7 @@ class Api {
 	}
 	
 	protected authorizationToken() {
-		return '1500|HzJPvQOLjwds90bugMGr4d3bWJ1xA0';
+		return process.env.CAPTURELY_TOKEN;
 	}
 	
 	protected isPdf() {
