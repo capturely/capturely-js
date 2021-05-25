@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7c54045-a2b2-4e14-bd08-008ed693a249" name="Default Changelist" comment="" />
+    <list default="true" id="d7c54045-a2b2-4e14-bd08-008ed693a249" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/main.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/main.test.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,10 +18,23 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1p5fwrO7jfYDRoz1zhlLcwQam9u" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,22 +43,32 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="HTML" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.19.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.19.1" />
-    <property name="last_opened_file_path" value="/usr/local/bin/ts-node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/structures" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/structures" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" path-to-node="/usr/local/Cellar/node/15.2.1/bin/node" nameIsGenerated="true" node-parameters="--loader ts-node/esm --experimental-specifier-resolution=node" path-to-js-file="test.js" working-dir="$PROJECT_DIR$">
+    <configuration name="main.test.js" type="NodeJSConfigurationType" temporary="true" path-to-node="/usr/local/Cellar/node/15.2.1/bin/node" nameIsGenerated="true" node-parameters="npm run test" path-to-js-file="__tests__/main.test.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.test.js" />
+        <item itemvalue="Node.js.main.test.js" />
       </list>
     </recent_temporary>
   </component>
@@ -53,11 +80,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1614478113283</updated>
-      <workItem from="1614478114391" duration="7441000" />
+      <workItem from="1614478114391" duration="7601000" />
+      <workItem from="1615386889449" duration="894000" />
+      <workItem from="1615520957930" duration="137000" />
+      <workItem from="1616161517899" duration="1526000" />
+      <workItem from="1616503918426" duration="10059000" />
+      <workItem from="1616522522847" duration="841000" />
+      <workItem from="1616591127537" duration="9119000" />
+      <workItem from="1616638266223" duration="1315000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/jest.config.js" />
+      </list>
+    </option>
   </component>
 </project>
